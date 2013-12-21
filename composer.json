@@ -2,6 +2,7 @@
     "name": "nwidart/export-wrapper",
     "description": "A PHP wrapper around Sonata-Exporter, for ease of use",
     "keywords": ["Export", "PHP"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Nicolas Widart",
