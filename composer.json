@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/ExportWrapper",
+    "name": "nwidart/export-wrapper",
     "description": "A PHP wrapper around Sonata-Exporter, for ease of use",
     "keywords": ["Export", "PHP"],
     "authors": [
