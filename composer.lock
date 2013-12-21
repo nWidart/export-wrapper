@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8f840e625a9ee910b1ff296bff4ddc1c",
+    "hash": "4053c8e332424050a47fba33ee5d93bd",
     "packages": [
         {
             "name": "sonata-project/exporter",

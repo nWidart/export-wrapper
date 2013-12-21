@@ -46,10 +46,10 @@ $data = [
 
 Use the exporter
 
-	`use nwidart\ExportWrapper\Exporter;`
+	use nwidart\ExportWrapper\Exporter;
 Instantiation
 
-    `$exporter = new Exporter;`
+    $exporter = new Exporter;
 
 **Stream** data directly to the browser
 
