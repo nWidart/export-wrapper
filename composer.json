@@ -1,0 +1,23 @@
+{
+    "name": "nwidart/ExportWrapper",
+    "description": "A PHP wrapper around Sonata-Exporter, for ease of use",
+    "keywords": ["Export", "PHP"],
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com",
+            "homepage": "http://nicolaswidart.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "sonata-project/exporter": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "nwidart\\ExportWrapper": "src/"
+        }
+    }
+}
