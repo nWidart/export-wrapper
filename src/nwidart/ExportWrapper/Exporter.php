@@ -84,7 +84,7 @@ class Exporter
      */
     public function withArray($data)
     {
-        if (!is_array($data) && !$data instanceof \Traversable) {
+        if (!is_array($data) && !$data instanceof \Iterator) {
             throw new IncorrectDataTypeException('Data is not an array.');
         }
 
