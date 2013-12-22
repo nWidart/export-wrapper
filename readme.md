@@ -53,14 +53,28 @@ Instantiation
 
 **Stream** data directly to the browser
 
-	$exporter->with($data)->to('allusers.csv')->stream();
+	try {
+        $exporter->with($data)->to('allusers.xlsx')->stream();
+    }
+
+And catch the exceptions
+
+    catch (nwidart\ExportWrapper\Exceptions\IncorrectDataTypeException $e) {
+        echo $e->getMessage();
+    }
+    catch (nwidart\ExportWrapper\Exceptions\InvalidExtensionException $e) {
+        echo $e->getMessage();
+    }
 
 Or ... **export** to a location on disk
 
-	$exporter->with($data)->to('/path/to/allusers.xls')->export();
-	
+	try {
+	    $exporter->with($data)->to('/path/to/allusers.xls')->export();
+	}
 
-## TODO 
+With the same exceptions as the stream method.
+
+## TODO
 * Make a Laravel implementation (Service provider & Facade).
 
 
