@@ -54,7 +54,7 @@ Instantiation
 **Stream** data directly to the browser
 
 	try {
-        $exporter->with($data)->to('allusers.xlsx')->stream();
+        $exporter->withArray($data)->to('allusers.xlsx')->stream();
     }
 
 And catch the exceptions
@@ -69,7 +69,7 @@ And catch the exceptions
 Or ... **export** to a location on disk
 
 	try {
-	    $exporter->with($data)->to('/path/to/allusers.xls')->export();
+	    $exporter->withArray($data)->to('/path/to/allusers.xls')->export();
 	}
 
 With the same exceptions as the stream method.

@@ -82,7 +82,7 @@ class Exporter
      * @return $this
      * @throws IncorrectDataTypeException
      */
-    public function with($data)
+    public function withArray($data)
     {
         if (!is_array($data) && !$data instanceof \Traversable) {
             throw new IncorrectDataTypeException('Data is not an array.');
