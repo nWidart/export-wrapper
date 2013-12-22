@@ -1,8 +1,10 @@
 <?php namespace nwidart\ExportWrapper;
 
-
 use Exporter\Handler;
+
 use Exporter\Source\ArraySourceIterator;
+use nwidart\ExportWrapper\Exceptions\IncorrectDataTypeException;
+use nwidart\ExportWrapper\Exceptions\InvalidExtensionException;
 
 class Exporter
 {
@@ -49,12 +51,25 @@ class Exporter
     protected $exporter_writer;
 
     /**
+     * Available export types
+     * @var array
+     */
+    protected $allowedTypes = ['csv', 'xml', 'json', 'xls'];
+
+    /**
      * @param String $sExportType
      * @return $this
+     * @throws InvalidExtensionException
      */
     public function to($sExportType)
     {
-        $this->format = pathinfo($sExportType, PATHINFO_EXTENSION);
+        $extension = pathinfo($sExportType, PATHINFO_EXTENSION);
+
+        if (!in_array($extension, $this->allowedTypes)) {
+            throw new InvalidExtensionException('Extension not supported');
+        }
+
+        $this->format = $extension;
         $this->fileName = $sExportType;
         $this->content_type = 'text/' . $this->format;
 
@@ -65,9 +80,14 @@ class Exporter
      * The data to export
      * @param Array $data
      * @return $this
+     * @throws IncorrectDataTypeException
      */
     public function with($data)
     {
+        if (!is_array($data) && !$data instanceof \Traversable) {
+            throw new IncorrectDataTypeException('Data is not an array.');
+        }
+
         $this->data = $data;
 
         return $this;
@@ -100,6 +120,9 @@ class Exporter
         Handler::create($this->exporter_source, $this->exporter_writer)->export();
     }
 
+    /**
+     * Export data to a file on disk
+     */
     public function export()
     {
         // Data to export
