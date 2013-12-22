@@ -54,7 +54,7 @@ class Exporter
      * Available export types
      * @var array
      */
-    protected $allowedTypes = ['csv', 'xml', 'json', 'xls'];
+    protected $allowedTypes = array('csv', 'xml', 'json', 'xls');
 
     /**
      * @param String $sExportType
