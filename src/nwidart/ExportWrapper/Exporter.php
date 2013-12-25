@@ -3,6 +3,7 @@
 use Exporter\Handler;
 
 use Exporter\Source\ArraySourceIterator;
+use Exporter\Source\PDOStatementSourceIterator;
 use nwidart\ExportWrapper\Exceptions\IncorrectDataTypeException;
 use nwidart\ExportWrapper\Exceptions\InvalidExtensionException;
 
@@ -88,7 +89,20 @@ class Exporter
             throw new IncorrectDataTypeException('Data is not an array.');
         }
 
-        $this->data = $data;
+        $this->exporter_source = new ArraySourceIterator($data);
+
+        return $this;
+    }
+
+    /**
+     * The PDO object to export
+     * @param $object
+     * @return $this
+     * TODO check for correct data (Type hinting PDOStatement maybe)
+     */
+    public function withPdo($object)
+    {
+        $this->exporter_source = new PDOStatementSourceIterator($object);
 
         return $this;
     }
@@ -101,7 +115,7 @@ class Exporter
         // 0. set the export_to to php special output
         $this->export_to = 'php://output';
         // 1. Se the export source
-        $this->exporter_source = new ArraySourceIterator($this->data);
+        /*$this->exporter_source = new ArraySourceIterator($this->data);*/
 
         // Get an Instance of the Writer
         $this->exporter_writer = '\Exporter\Writer\\' . ucfirst($this->format) . 'Writer';
@@ -126,7 +140,7 @@ class Exporter
     public function export()
     {
         // Data to export
-        $this->exporter_source = new ArraySourceIterator($this->data);
+        /*$this->exporter_source = new ArraySourceIterator($this->data);*/
 
         // Get an Instance of the Writer
         $this->exporter_writer = '\Exporter\Writer\\' . ucfirst($this->format) . 'Writer';
